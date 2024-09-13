@@ -1,0 +1,95 @@
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 4px;
+  height: 500px;
+  width: 500px;
+  background: black;
+  border: 5px solid white;
+}
+
+@keyframes nested_aniamtion
+	{
+	5%
+		{
+		transform: scale(1) translateX(0);
+		}
+	99%
+		{
+		transform: scale(0.8) rotate(300deg) translateY(10px);
+		border-color: goldenrod;
+		
+		border-width: 1px;
+
+		}
+	100%
+		{
+		transform: scale(1) translateX(0);
+		}
+	}
+
+.nested {
+	animation-name: nested_aniamtion;
+	animation-iteration-count: infinite;
+	animation-duration: 30s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: rand;
+
+  padding: 0.5px;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-width: 2px;
+  background-color: black;
+}
+
+</style>
+
+
+
+
+<div class="container" id="k">
+
+</div>
+
+
+<script>
+
+
+function do_the_thing()
+	{
+	let things = [];
+	let border_count = 70;
+	let target = document.getElementById("k");
+	for (let index = 0; index != border_count; index++)
+		{
+		let this_thing = document.createElement("div");
+
+		this_thing.classList.add("nested");
+		let n =(200/border_count)*(border_count-index)+54;	
+		this_thing.style.borderColor = `rgb(${n},${n},${n})`;
+		target.appendChild(this_thing);
+		target = this_thing;
+		things.push(this_thing);
+		}
+
+
+
+	}
+
+do_the_thing();
+</script>
